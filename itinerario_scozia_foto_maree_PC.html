@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  html, body { height:100%; margin:0; padding:0; }
+  .folium-map { width:100%; height:100vh; }
+</style>
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_7d29f75c1bce2182a0324d26a80afd3f {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/1.4.2/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/1.4.2/Control.FullScreen.min.css"/>
+    <script src="https://cdn.jsdelivr.net/gh/ardhi/Leaflet.MousePosition/src/L.Control.MousePosition.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ardhi/Leaflet.MousePosition/src/L.Control.MousePosition.min.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_7d29f75c1bce2182a0324d26a80afd3f" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_7d29f75c1bce2182a0324d26a80afd3f = L.map(
+                "map_7d29f75c1bce2182a0324d26a80afd3f",
+                {
+                    center: [57.6, -3.9],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 6,
+                    zoomControl: true,
+                    preferCanvas: true,
+                }
+            );
+            L.control.scale().addTo(map_7d29f75c1bce2182a0324d26a80afd3f);
+
+            
+
+        
+    
+            var tile_layer_cbb7be0ee8d2f8d2a207474f3bc7012b = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_7d29f75c1bce2182a0324d26a80afd3f);
+        
+    
+            var tile_layer_9da61f20b55f9a85913aa9073c509ebf = L.tileLayer(
+                "https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg",
+                {"attribution": "Map tiles by \u003ca href=\"http://stamen.com\"\u003eStamen Design\u003c/a\u003e, under \u003ca href=\"http://creativecommons.org/licenses/by/3.0\"\u003eCC BY 3.0\u003c/a\u003e. Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://creativecommons.org/licenses/by-sa/3.0\"\u003eCC BY SA\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_7d29f75c1bce2182a0324d26a80afd3f);
+        
+    
+            var tile_layer_c8706a3aa3eeaa8c6200d5e1e06d9155 = L.tileLayer(
+                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_7d29f75c1bce2182a0324d26a80afd3f);
+        
+    
+            var layer_control_2997dae1eb06c8b303b0a75a74f26397 = {
+                base_layers : {
+                    "OpenStreetMap" : tile_layer_cbb7be0ee8d2f8d2a207474f3bc7012b,
+                    "Terreno" : tile_layer_9da61f20b55f9a85913aa9073c509ebf,
+                    "Chiaro" : tile_layer_c8706a3aa3eeaa8c6200d5e1e06d9155,
+                },
+                overlays :  {
+                },
+            };
+            L.control.layers(
+                layer_control_2997dae1eb06c8b303b0a75a74f26397.base_layers,
+                layer_control_2997dae1eb06c8b303b0a75a74f26397.overlays,
+                {"autoZIndex": true, "collapsed": false, "position": "topright"}
+            ).addTo(map_7d29f75c1bce2182a0324d26a80afd3f);
+            tile_layer_9da61f20b55f9a85913aa9073c509ebf.remove();
+            tile_layer_c8706a3aa3eeaa8c6200d5e1e06d9155.remove();
+        
+    
+            L.control.fullscreen(
+                {"forceSeparateButton": false, "position": "topleft", "title": "Full Screen", "titleCancel": "Exit Full Screen"}
+            ).addTo(map_7d29f75c1bce2182a0324d26a80afd3f);
+        
+    
+            var mouse_position_c24e189549f67f8d6a0dce53e9aa5461 = new L.Control.MousePosition(
+                {"emptyString": "Unavailable", "lngFirst": false, "numDigits": 5, "position": "bottomright", "prefix": "Lat/Lon", "separator": " : "}
+            );
+            mouse_position_c24e189549f67f8d6a0dce53e9aa5461.options["latFormatter"] =
+                undefined;
+            mouse_position_c24e189549f67f8d6a0dce53e9aa5461.options["lngFormatter"] =
+                undefined;
+            map_7d29f75c1bce2182a0324d26a80afd3f.addControl(mouse_position_c24e189549f67f8d6a0dce53e9aa5461);
+        
+    
+            var marker_c2753e57e19a71d526449cbd5462c6f1 = L.marker(
+                [57.594, -4.539],
+                {}
+            ).addTo(map_7d29f75c1bce2182a0324d26a80afd3f);
+        
+    
+            var icon_e1ed11ab0ecbd050fc89a6555dd7f171 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "camera", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_c2753e57e19a71d526449cbd5462c6f1.setIcon(icon_e1ed11ab0ecbd050fc89a6555dd7f171);
+        
+    
+        var popup_6daf527fbcc2e95d5de507158708712b = L.popup({"maxWidth": 320});
+
+        
+            var html_0644b432833d3da20ab71f80ba1cebed = $(`<div id="html_0644b432833d3da20ab71f80ba1cebed" style="width: 100.0%; height: 100.0%;">     <div style="min-width:220px">       <h4 style="margin:0 0 6px 0;">1. Strathpeffer</h4>       <div style="display:flex;gap:8px;flex-wrap:wrap;">         <a href="https://www.google.com/search?tbm=isch&q=Strathpeffer+Scotland+photos" target="_blank" style="text-decoration:none;">           <button style="padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Foto</button>         </a>                </div>       <div style="margin-top:6px;color:#555;font-size:12px;">Suggerimento: luce dorata spesso migliore entro 60–90 min da alba/tramonto.</div>     </div>     </div>`)[0];
+            popup_6daf527fbcc2e95d5de507158708712b.setContent(html_0644b432833d3da20ab71f80ba1cebed);
+        
+
+        marker_c2753e57e19a71d526449cbd5462c6f1.bindPopup(popup_6daf527fbcc2e95d5de507158708712b)
+        ;
+
+        
+    
+    
+            marker_c2753e57e19a71d526449cbd5462c6f1.bindTooltip(
+                `<div>
+                     1. Strathpeffer
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b38dd2610eef2d1a95ec0042bead53de = L.marker(
+                [57.983, -4.403],
+                {}
+            ).addTo(map_7d29f75c1bce2182a0324d26a80afd3f);
+        
+    
+            var icon_487fb781831dfa703212ab74c557d02b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "camera", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_b38dd2610eef2d1a95ec0042bead53de.setIcon(icon_487fb781831dfa703212ab74c557d02b);
+        
+    
+        var popup_a1555719bec837c55578b798153407e0 = L.popup({"maxWidth": 320});
+
+        
+            var html_b99c008fbc9c6e89da6ec8284c906a6e = $(`<div id="html_b99c008fbc9c6e89da6ec8284c906a6e" style="width: 100.0%; height: 100.0%;">     <div style="min-width:220px">       <h4 style="margin:0 0 6px 0;">2. Falls of Shin</h4>       <div style="display:flex;gap:8px;flex-wrap:wrap;">         <a href="https://www.google.com/search?tbm=isch&q=Falls+of+Shin+Scotland+photos" target="_blank" style="text-decoration:none;">           <button style="padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Foto</button>         </a>                </div>       <div style="margin-top:6px;color:#555;font-size:12px;">Suggerimento: luce dorata spesso migliore entro 60–90 min da alba/tramonto.</div>     </div>     </div>`)[0];
+            popup_a1555719bec837c55578b798153407e0.setContent(html_b99c008fbc9c6e89da6ec8284c906a6e);
+        
+
+        marker_b38dd2610eef2d1a95ec0042bead53de.bindPopup(popup_a1555719bec837c55578b798153407e0)
+        ;
+
+        
+    
+    
+            marker_b38dd2610eef2d1a95ec0042bead53de.bindTooltip(
+                `<div>
+                     2. Falls of Shin
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_dbaac46f86562ef3c136a5144463343a = L.marker(
+                [58.1, -4.4],
+                {}
+            ).addTo(map_7d29f75c1bce2182a0324d26a80afd3f);
+        
+    
+            var icon_8520f32a605c2f61be366821e2405fff = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "camera", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_dbaac46f86562ef3c136a5144463343a.setIcon(icon_8520f32a605c2f61be366821e2405fff);
+        
+    
+        var popup_c70b4e262ec63274ef525198b3d393bd = L.popup({"maxWidth": 320});
+
+        
+            var html_10a5b23b17756d17f395d303f321672d = $(`<div id="html_10a5b23b17756d17f395d303f321672d" style="width: 100.0%; height: 100.0%;">     <div style="min-width:220px">       <h4 style="margin:0 0 6px 0;">3. Loch Shin</h4>       <div style="display:flex;gap:8px;flex-wrap:wrap;">         <a href="https://www.google.com/search?tbm=isch&q=Loch+Shin+Scotland+photos" target="_blank" style="text-decoration:none;">           <button style="padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Foto</button>         </a>                </div>       <div style="margin-top:6px;color:#555;font-size:12px;">Suggerimento: luce dorata spesso migliore entro 60–90 min da alba/tramonto.</div>     </div>     </div>`)[0];
+            popup_c70b4e262ec63274ef525198b3d393bd.setContent(html_10a5b23b17756d17f395d303f321672d);
+        
+
+        marker_dbaac46f86562ef3c136a5144463343a.bindPopup(popup_c70b4e262ec63274ef525198b3d393bd)
+        ;
+
+        
+    
+    
+            marker_dbaac46f86562ef3c136a5144463343a.bindTooltip(
+                `<div>
+                     3. Loch Shin
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b3e399fe05b397ed43eea07fa4ad90ce = L.marker(
+                [58.367, -4.966],
+                {}
+            ).addTo(map_7d29f75c1bce2182a0324d26a80afd3f);
+        
+    
+            var icon_ad50f440734e8ad62006af8c5c26cc1a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "camera", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_b3e399fe05b397ed43eea07fa4ad90ce.setIcon(icon_ad50f440734e8ad62006af8c5c26cc1a);
+        
+    
+        var popup_a4ded148b4bec6c3eeae6f9e6f7b6c1c = L.popup({"maxWidth": 320});
+
+        
+            var html_e257d7c0470dce1a14de2eb5f87d5aba = $(`<div id="html_e257d7c0470dce1a14de2eb5f87d5aba" style="width: 100.0%; height: 100.0%;">     <div style="min-width:220px">       <h4 style="margin:0 0 6px 0;">4. Laxford Bridge</h4>       <div style="display:flex;gap:8px;flex-wrap:wrap;">         <a href="https://www.google.com/search?tbm=isch&q=Laxford+Bridge+Scotland+photos" target="_blank" style="text-decoration:none;">           <button style="padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Foto</button>         </a>                </div>       <div style="margin-top:6px;color:#555;font-size:12px;">Suggerimento: luce dorata spesso migliore entro 60–90 min da alba/tramonto.</div>     </div>     </div>`)[0];
+            popup_a4ded148b4bec6c3eeae6f9e6f7b6c1c.setContent(html_e257d7c0470dce1a14de2eb5f87d5aba);
+        
+
+        marker_b3e399fe05b397ed43eea07fa4ad90ce.bindPopup(popup_a4ded148b4bec6c3eeae6f9e6f7b6c1c)
+        ;
+
+        
+    
+    
+            marker_b3e399fe05b397ed43eea07fa4ad90ce.bindTooltip(
+                `<div>
+                     4. Laxford Bridge
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_89c904f8c86a9f960da3467202323eb5 = L.marker(
+                [58.565, -4.738],
+                {}
+            ).addTo(map_7d29f75c1bce2182a0324d26a80afd3f);
+        
+    
+            var icon_043d619e038c877dc2e8bddd2435dae2 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "camera", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_89c904f8c86a9f960da3467202323eb5.setIcon(icon_043d619e038c877dc2e8bddd2435dae2);
+        
+    
+        var popup_40410773dffcfb5e2fefd57490c3d388 = L.popup({"maxWidth": 320});
+
+        
+            var html_1966a24628baa5123633ff15ecb82c5b = $(`<div id="html_1966a24628baa5123633ff15ecb82c5b" style="width: 100.0%; height: 100.0%;">     <div style="min-width:220px">       <h4 style="margin:0 0 6px 0;">5. Smoo Cave (Durness)</h4>       <div style="display:flex;gap:8px;flex-wrap:wrap;">         <a href="https://www.google.com/search?tbm=isch&q=Smoo+Cave+%28Durness%29+Scotland+photos" target="_blank" style="text-decoration:none;">           <button style="padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Foto</button>         </a>         <a href="https://www.google.com/search?q=Smoo+Cave+%28Durness%29+tide+times+Scotland" target="_blank" style="text-decoration:none;">         <button style="margin-top:6px;padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Maree (ricerca)</button></a>       </div>       <div style="margin-top:6px;color:#555;font-size:12px;">Suggerimento: luce dorata spesso migliore entro 60–90 min da alba/tramonto.</div>     </div>     </div>`)[0];
+            popup_40410773dffcfb5e2fefd57490c3d388.setContent(html_1966a24628baa5123633ff15ecb82c5b);
+        
+
+        marker_89c904f8c86a9f960da3467202323eb5.bindPopup(popup_40410773dffcfb5e2fefd57490c3d388)
+        ;
+
+        
+    
+    
+            marker_89c904f8c86a9f960da3467202323eb5.bindTooltip(
+                `<div>
+                     5. Smoo Cave (Durness)
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_344bed71dc02aebceaba2fa56cabd7e9 = L.marker(
+                [58.593, -4.783],
+                {}
+            ).addTo(map_7d29f75c1bce2182a0324d26a80afd3f);
+        
+    
+            var icon_0ad8fc1a281717a21d1c4d25a563721f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "camera", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_344bed71dc02aebceaba2fa56cabd7e9.setIcon(icon_0ad8fc1a281717a21d1c4d25a563721f);
+        
+    
+        var popup_76c9d6d70e9794df6e5234afe7bb7dcf = L.popup({"maxWidth": 320});
+
+        
+            var html_22e90756c7e02b9a13da8b3d0caea956 = $(`<div id="html_22e90756c7e02b9a13da8b3d0caea956" style="width: 100.0%; height: 100.0%;">     <div style="min-width:220px">       <h4 style="margin:0 0 6px 0;">6. Balnakeil Beach</h4>       <div style="display:flex;gap:8px;flex-wrap:wrap;">         <a href="https://www.google.com/search?tbm=isch&q=Balnakeil+Beach+Scotland+photos" target="_blank" style="text-decoration:none;">           <button style="padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Foto</button>         </a>         <a href="https://www.google.com/search?q=Balnakeil+Beach+tide+times+Scotland" target="_blank" style="text-decoration:none;">         <button style="margin-top:6px;padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Maree (ricerca)</button></a>       </div>       <div style="margin-top:6px;color:#555;font-size:12px;">Suggerimento: luce dorata spesso migliore entro 60–90 min da alba/tramonto.</div>     </div>     </div>`)[0];
+            popup_76c9d6d70e9794df6e5234afe7bb7dcf.setContent(html_22e90756c7e02b9a13da8b3d0caea956);
+        
+
+        marker_344bed71dc02aebceaba2fa56cabd7e9.bindPopup(popup_76c9d6d70e9794df6e5234afe7bb7dcf)
+        ;
+
+        
+    
+    
+            marker_344bed71dc02aebceaba2fa56cabd7e9.bindTooltip(
+                `<div>
+                     6. Balnakeil Beach
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7efa8b166bea2d6d33975e5b5bac8afe = L.marker(
+                [58.488, -4.424],
+                {}
+            ).addTo(map_7d29f75c1bce2182a0324d26a80afd3f);
+        
+    
+            var icon_cb0b447be5396ca4f3f0ddb85ec06e45 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "camera", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_7efa8b166bea2d6d33975e5b5bac8afe.setIcon(icon_cb0b447be5396ca4f3f0ddb85ec06e45);
+        
+    
+        var popup_848f745537d3ec0c26dd6d97bcdb8fb9 = L.popup({"maxWidth": 320});
+
+        
+            var html_1dc6f0651f3798e573f156d4a64c6069 = $(`<div id="html_1dc6f0651f3798e573f156d4a64c6069" style="width: 100.0%; height: 100.0%;">     <div style="min-width:220px">       <h4 style="margin:0 0 6px 0;">7. Kyle of Tongue</h4>       <div style="display:flex;gap:8px;flex-wrap:wrap;">         <a href="https://www.google.com/search?tbm=isch&q=Kyle+of+Tongue+Scotland+photos" target="_blank" style="text-decoration:none;">           <button style="padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Foto</button>         </a>                </div>       <div style="margin-top:6px;color:#555;font-size:12px;">Suggerimento: luce dorata spesso migliore entro 60–90 min da alba/tramonto.</div>     </div>     </div>`)[0];
+            popup_848f745537d3ec0c26dd6d97bcdb8fb9.setContent(html_1dc6f0651f3798e573f156d4a64c6069);
+        
+
+        marker_7efa8b166bea2d6d33975e5b5bac8afe.bindPopup(popup_848f745537d3ec0c26dd6d97bcdb8fb9)
+        ;
+
+        
+    
+    
+            marker_7efa8b166bea2d6d33975e5b5bac8afe.bindTooltip(
+                `<div>
+                     7. Kyle of Tongue
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a06e1a2395b67ca8f94ba91a018e0a1c = L.marker(
+                [58.488, -4.428],
+                {}
+            ).addTo(map_7d29f75c1bce2182a0324d26a80afd3f);
+        
+    
+            var icon_d7c06f2a69edbee009261e44ec67b128 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "camera", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_a06e1a2395b67ca8f94ba91a018e0a1c.setIcon(icon_d7c06f2a69edbee009261e44ec67b128);
+        
+    
+        var popup_0e34dc1076bb8ca8758b870c69d6dbfe = L.popup({"maxWidth": 320});
+
+        
+            var html_c9318237ac784d0b7e641f910404f9af = $(`<div id="html_c9318237ac784d0b7e641f910404f9af" style="width: 100.0%; height: 100.0%;">     <div style="min-width:220px">       <h4 style="margin:0 0 6px 0;">8. Castle Varrich</h4>       <div style="display:flex;gap:8px;flex-wrap:wrap;">         <a href="https://www.google.com/search?tbm=isch&q=Castle+Varrich+Scotland+photos" target="_blank" style="text-decoration:none;">           <button style="padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Foto</button>         </a>                </div>       <div style="margin-top:6px;color:#555;font-size:12px;">Suggerimento: luce dorata spesso migliore entro 60–90 min da alba/tramonto.</div>     </div>     </div>`)[0];
+            popup_0e34dc1076bb8ca8758b870c69d6dbfe.setContent(html_c9318237ac784d0b7e641f910404f9af);
+        
+
+        marker_a06e1a2395b67ca8f94ba91a018e0a1c.bindPopup(popup_0e34dc1076bb8ca8758b870c69d6dbfe)
+        ;
+
+        
+    
+    
+            marker_a06e1a2395b67ca8f94ba91a018e0a1c.bindTooltip(
+                `<div>
+                     8. Castle Varrich
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e6334df7326ea78e092a5f86266fd4e2 = L.marker(
+                [58.671, -3.376],
+                {}
+            ).addTo(map_7d29f75c1bce2182a0324d26a80afd3f);
+        
+    
+            var icon_ecfb419d9f65d340f450e4c63babe953 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "camera", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_e6334df7326ea78e092a5f86266fd4e2.setIcon(icon_ecfb419d9f65d340f450e4c63babe953);
+        
+    
+        var popup_be4eb65aea5e8189b590236b1e390314 = L.popup({"maxWidth": 320});
+
+        
+            var html_142bd97e885b5c0dabb0e19764856d39 = $(`<div id="html_142bd97e885b5c0dabb0e19764856d39" style="width: 100.0%; height: 100.0%;">     <div style="min-width:220px">       <h4 style="margin:0 0 6px 0;">9. Dunnet Head</h4>       <div style="display:flex;gap:8px;flex-wrap:wrap;">         <a href="https://www.google.com/search?tbm=isch&q=Dunnet+Head+Scotland+photos" target="_blank" style="text-decoration:none;">           <button style="padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Foto</button>         </a>         <a href="https://www.google.com/search?q=Dunnet+Head+tide+times+Scotland" target="_blank" style="text-decoration:none;">         <button style="margin-top:6px;padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Maree (ricerca)</button></a>       </div>       <div style="margin-top:6px;color:#555;font-size:12px;">Suggerimento: luce dorata spesso migliore entro 60–90 min da alba/tramonto.</div>     </div>     </div>`)[0];
+            popup_be4eb65aea5e8189b590236b1e390314.setContent(html_142bd97e885b5c0dabb0e19764856d39);
+        
+
+        marker_e6334df7326ea78e092a5f86266fd4e2.bindPopup(popup_be4eb65aea5e8189b590236b1e390314)
+        ;
+
+        
+    
+    
+            marker_e6334df7326ea78e092a5f86266fd4e2.bindTooltip(
+                `<div>
+                     9. Dunnet Head
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3647db1bdbd7c4ca28843f1bd77d7a72 = L.marker(
+                [58.637, -3.07],
+                {}
+            ).addTo(map_7d29f75c1bce2182a0324d26a80afd3f);
+        
+    
+            var icon_d3b95f3d05ce0452d70a37224feb1566 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "camera", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_3647db1bdbd7c4ca28843f1bd77d7a72.setIcon(icon_d3b95f3d05ce0452d70a37224feb1566);
+        
+    
+        var popup_f99dcbb53f846692260592af41db7e9d = L.popup({"maxWidth": 320});
+
+        
+            var html_57fd66493d21c6bb7c46a60eb1232843 = $(`<div id="html_57fd66493d21c6bb7c46a60eb1232843" style="width: 100.0%; height: 100.0%;">     <div style="min-width:220px">       <h4 style="margin:0 0 6px 0;">10. John o’ Groats</h4>       <div style="display:flex;gap:8px;flex-wrap:wrap;">         <a href="https://www.google.com/search?tbm=isch&q=John+o%E2%80%99+Groats+Scotland+photos" target="_blank" style="text-decoration:none;">           <button style="padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Foto</button>         </a>         <a href="https://www.google.com/search?q=John+o%E2%80%99+Groats+tide+times+Scotland" target="_blank" style="text-decoration:none;">         <button style="margin-top:6px;padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Maree (ricerca)</button></a>       </div>       <div style="margin-top:6px;color:#555;font-size:12px;">Suggerimento: luce dorata spesso migliore entro 60–90 min da alba/tramonto.</div>     </div>     </div>`)[0];
+            popup_f99dcbb53f846692260592af41db7e9d.setContent(html_57fd66493d21c6bb7c46a60eb1232843);
+        
+
+        marker_3647db1bdbd7c4ca28843f1bd77d7a72.bindPopup(popup_f99dcbb53f846692260592af41db7e9d)
+        ;
+
+        
+    
+    
+            marker_3647db1bdbd7c4ca28843f1bd77d7a72.bindTooltip(
+                `<div>
+                     10. John o’ Groats
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b2ab3410a953971905521885a1dadb1f = L.marker(
+                [58.639, -3.011],
+                {}
+            ).addTo(map_7d29f75c1bce2182a0324d26a80afd3f);
+        
+    
+            var icon_f2c480714142f033cd97009c43e3108b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "camera", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_b2ab3410a953971905521885a1dadb1f.setIcon(icon_f2c480714142f033cd97009c43e3108b);
+        
+    
+        var popup_b1a4404ad0a8caa4951614cab6e98b5f = L.popup({"maxWidth": 320});
+
+        
+            var html_5d2ca11e1aa52a06258ab404169d167b = $(`<div id="html_5d2ca11e1aa52a06258ab404169d167b" style="width: 100.0%; height: 100.0%;">     <div style="min-width:220px">       <h4 style="margin:0 0 6px 0;">11. Stacks of Duncansby</h4>       <div style="display:flex;gap:8px;flex-wrap:wrap;">         <a href="https://www.google.com/search?tbm=isch&q=Stacks+of+Duncansby+Scotland+photos" target="_blank" style="text-decoration:none;">           <button style="padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Foto</button>         </a>         <a href="https://www.google.com/search?q=Stacks+of+Duncansby+tide+times+Scotland" target="_blank" style="text-decoration:none;">         <button style="margin-top:6px;padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Maree (ricerca)</button></a>       </div>       <div style="margin-top:6px;color:#555;font-size:12px;">Suggerimento: luce dorata spesso migliore entro 60–90 min da alba/tramonto.</div>     </div>     </div>`)[0];
+            popup_b1a4404ad0a8caa4951614cab6e98b5f.setContent(html_5d2ca11e1aa52a06258ab404169d167b);
+        
+
+        marker_b2ab3410a953971905521885a1dadb1f.bindPopup(popup_b1a4404ad0a8caa4951614cab6e98b5f)
+        ;
+
+        
+    
+    
+            marker_b2ab3410a953971905521885a1dadb1f.bindTooltip(
+                `<div>
+                     11. Stacks of Duncansby
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_992e2ecee2126f77de9f12ebec2a68e4 = L.marker(
+                [58.439, -3.094],
+                {}
+            ).addTo(map_7d29f75c1bce2182a0324d26a80afd3f);
+        
+    
+            var icon_4ac362fe67419dd43b087cfc89fde369 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "camera", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_992e2ecee2126f77de9f12ebec2a68e4.setIcon(icon_4ac362fe67419dd43b087cfc89fde369);
+        
+    
+        var popup_6d81b3e4bf0d28e2658ffa18333c7195 = L.popup({"maxWidth": 320});
+
+        
+            var html_31bd5dfe93de8220d14e8fb7480cfa02 = $(`<div id="html_31bd5dfe93de8220d14e8fb7480cfa02" style="width: 100.0%; height: 100.0%;">     <div style="min-width:220px">       <h4 style="margin:0 0 6px 0;">12. Wick</h4>       <div style="display:flex;gap:8px;flex-wrap:wrap;">         <a href="https://www.google.com/search?tbm=isch&q=Wick+Scotland+photos" target="_blank" style="text-decoration:none;">           <button style="padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Foto</button>         </a>         <a href="https://www.google.com/search?q=Wick+tide+times+Scotland" target="_blank" style="text-decoration:none;">         <button style="margin-top:6px;padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Maree (ricerca)</button></a>       </div>       <div style="margin-top:6px;color:#555;font-size:12px;">Suggerimento: luce dorata spesso migliore entro 60–90 min da alba/tramonto.</div>     </div>     </div>`)[0];
+            popup_6d81b3e4bf0d28e2658ffa18333c7195.setContent(html_31bd5dfe93de8220d14e8fb7480cfa02);
+        
+
+        marker_992e2ecee2126f77de9f12ebec2a68e4.bindPopup(popup_6d81b3e4bf0d28e2658ffa18333c7195)
+        ;
+
+        
+    
+    
+            marker_992e2ecee2126f77de9f12ebec2a68e4.bindTooltip(
+                `<div>
+                     12. Wick
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_777a600de5839c7c754d7e795017de73 = L.marker(
+                [58.369, -3.206],
+                {}
+            ).addTo(map_7d29f75c1bce2182a0324d26a80afd3f);
+        
+    
+            var icon_d81d11f948ebeef824a44c3c43ab5346 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "camera", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_777a600de5839c7c754d7e795017de73.setIcon(icon_d81d11f948ebeef824a44c3c43ab5346);
+        
+    
+        var popup_686a3469161a6130402a1cd74a111b61 = L.popup({"maxWidth": 320});
+
+        
+            var html_f248027995445bf4681d7d7ae9ff50b3 = $(`<div id="html_f248027995445bf4681d7d7ae9ff50b3" style="width: 100.0%; height: 100.0%;">     <div style="min-width:220px">       <h4 style="margin:0 0 6px 0;">13. Whaligoe Steps</h4>       <div style="display:flex;gap:8px;flex-wrap:wrap;">         <a href="https://www.google.com/search?tbm=isch&q=Whaligoe+Steps+Scotland+photos" target="_blank" style="text-decoration:none;">           <button style="padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Foto</button>         </a>         <a href="https://www.google.com/search?q=Whaligoe+Steps+tide+times+Scotland" target="_blank" style="text-decoration:none;">         <button style="margin-top:6px;padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Maree (ricerca)</button></a>       </div>       <div style="margin-top:6px;color:#555;font-size:12px;">Suggerimento: luce dorata spesso migliore entro 60–90 min da alba/tramonto.</div>     </div>     </div>`)[0];
+            popup_686a3469161a6130402a1cd74a111b61.setContent(html_f248027995445bf4681d7d7ae9ff50b3);
+        
+
+        marker_777a600de5839c7c754d7e795017de73.bindPopup(popup_686a3469161a6130402a1cd74a111b61)
+        ;
+
+        
+    
+    
+            marker_777a600de5839c7c754d7e795017de73.bindTooltip(
+                `<div>
+                     13. Whaligoe Steps
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c45dbcb1bc41ff40c225ce7e8fa0c81a = L.marker(
+                [57.985, -3.944],
+                {}
+            ).addTo(map_7d29f75c1bce2182a0324d26a80afd3f);
+        
+    
+            var icon_464e43183c07a04c0b287ccb58c7d52a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "camera", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_c45dbcb1bc41ff40c225ce7e8fa0c81a.setIcon(icon_464e43183c07a04c0b287ccb58c7d52a);
+        
+    
+        var popup_457cd6529da700f9a82fc41022953ad4 = L.popup({"maxWidth": 320});
+
+        
+            var html_26139ae81ab4579fb4e1f9b1ff865450 = $(`<div id="html_26139ae81ab4579fb4e1f9b1ff865450" style="width: 100.0%; height: 100.0%;">     <div style="min-width:220px">       <h4 style="margin:0 0 6px 0;">14. Dunrobin Castle</h4>       <div style="display:flex;gap:8px;flex-wrap:wrap;">         <a href="https://www.google.com/search?tbm=isch&q=Dunrobin+Castle+Scotland+photos" target="_blank" style="text-decoration:none;">           <button style="padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Foto</button>         </a>                </div>       <div style="margin-top:6px;color:#555;font-size:12px;">Suggerimento: luce dorata spesso migliore entro 60–90 min da alba/tramonto.</div>     </div>     </div>`)[0];
+            popup_457cd6529da700f9a82fc41022953ad4.setContent(html_26139ae81ab4579fb4e1f9b1ff865450);
+        
+
+        marker_c45dbcb1bc41ff40c225ce7e8fa0c81a.bindPopup(popup_457cd6529da700f9a82fc41022953ad4)
+        ;
+
+        
+    
+    
+            marker_c45dbcb1bc41ff40c225ce7e8fa0c81a.bindTooltip(
+                `<div>
+                     14. Dunrobin Castle
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_dc8a8e01612033942489f010ce4ba6aa = L.marker(
+                [58.01, -3.851],
+                {}
+            ).addTo(map_7d29f75c1bce2182a0324d26a80afd3f);
+        
+    
+            var icon_98d74c253a18482e79b8ce7171f44cf4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "camera", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_dc8a8e01612033942489f010ce4ba6aa.setIcon(icon_98d74c253a18482e79b8ce7171f44cf4);
+        
+    
+        var popup_c3ade683ddf6c1a3082e0df32b555e0b = L.popup({"maxWidth": 320});
+
+        
+            var html_e0665746fc9ef4f798bfcc7a84ea88f9 = $(`<div id="html_e0665746fc9ef4f798bfcc7a84ea88f9" style="width: 100.0%; height: 100.0%;">     <div style="min-width:220px">       <h4 style="margin:0 0 6px 0;">15. Brora</h4>       <div style="display:flex;gap:8px;flex-wrap:wrap;">         <a href="https://www.google.com/search?tbm=isch&q=Brora+Scotland+photos" target="_blank" style="text-decoration:none;">           <button style="padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Foto</button>         </a>         <a href="https://www.google.com/search?q=Brora+tide+times+Scotland" target="_blank" style="text-decoration:none;">         <button style="margin-top:6px;padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Maree (ricerca)</button></a>       </div>       <div style="margin-top:6px;color:#555;font-size:12px;">Suggerimento: luce dorata spesso migliore entro 60–90 min da alba/tramonto.</div>     </div>     </div>`)[0];
+            popup_c3ade683ddf6c1a3082e0df32b555e0b.setContent(html_e0665746fc9ef4f798bfcc7a84ea88f9);
+        
+
+        marker_dc8a8e01612033942489f010ce4ba6aa.bindPopup(popup_c3ade683ddf6c1a3082e0df32b555e0b)
+        ;
+
+        
+    
+    
+            marker_dc8a8e01612033942489f010ce4ba6aa.bindTooltip(
+                `<div>
+                     15. Brora
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c6e901dc3778e4cb8ac9b7fb80da1479 = L.marker(
+                [57.972, -3.987],
+                {}
+            ).addTo(map_7d29f75c1bce2182a0324d26a80afd3f);
+        
+    
+            var icon_040432060858af1996b02a622dc7eb52 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "camera", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_c6e901dc3778e4cb8ac9b7fb80da1479.setIcon(icon_040432060858af1996b02a622dc7eb52);
+        
+    
+        var popup_598c1a1ac6850df2f0211a75dbc78097 = L.popup({"maxWidth": 320});
+
+        
+            var html_c91d62d5752d3562aced829216379ee2 = $(`<div id="html_c91d62d5752d3562aced829216379ee2" style="width: 100.0%; height: 100.0%;">     <div style="min-width:220px">       <h4 style="margin:0 0 6px 0;">16. Golspie</h4>       <div style="display:flex;gap:8px;flex-wrap:wrap;">         <a href="https://www.google.com/search?tbm=isch&q=Golspie+Scotland+photos" target="_blank" style="text-decoration:none;">           <button style="padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Foto</button>         </a>                </div>       <div style="margin-top:6px;color:#555;font-size:12px;">Suggerimento: luce dorata spesso migliore entro 60–90 min da alba/tramonto.</div>     </div>     </div>`)[0];
+            popup_598c1a1ac6850df2f0211a75dbc78097.setContent(html_c91d62d5752d3562aced829216379ee2);
+        
+
+        marker_c6e901dc3778e4cb8ac9b7fb80da1479.bindPopup(popup_598c1a1ac6850df2f0211a75dbc78097)
+        ;
+
+        
+    
+    
+            marker_c6e901dc3778e4cb8ac9b7fb80da1479.bindTooltip(
+                `<div>
+                     16. Golspie
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_465d54f9b04a81325fdc5c3ddef9bee6 = L.marker(
+                [57.58, -4.055],
+                {}
+            ).addTo(map_7d29f75c1bce2182a0324d26a80afd3f);
+        
+    
+            var icon_42b47c67ddf6da47139d80def494dd4c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "camera", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_465d54f9b04a81325fdc5c3ddef9bee6.setIcon(icon_42b47c67ddf6da47139d80def494dd4c);
+        
+    
+        var popup_0374db664fa8b1358b225d45062fee14 = L.popup({"maxWidth": 320});
+
+        
+            var html_d9059039b49d54f57858db263176bd38 = $(`<div id="html_d9059039b49d54f57858db263176bd38" style="width: 100.0%; height: 100.0%;">     <div style="min-width:220px">       <h4 style="margin:0 0 6px 0;">17. Fort George</h4>       <div style="display:flex;gap:8px;flex-wrap:wrap;">         <a href="https://www.google.com/search?tbm=isch&q=Fort+George+Scotland+photos" target="_blank" style="text-decoration:none;">           <button style="padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Foto</button>         </a>         <a href="https://www.google.com/search?q=Fort+George+tide+times+Scotland" target="_blank" style="text-decoration:none;">         <button style="margin-top:6px;padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Maree (ricerca)</button></a>       </div>       <div style="margin-top:6px;color:#555;font-size:12px;">Suggerimento: luce dorata spesso migliore entro 60–90 min da alba/tramonto.</div>     </div>     </div>`)[0];
+            popup_0374db664fa8b1358b225d45062fee14.setContent(html_d9059039b49d54f57858db263176bd38);
+        
+
+        marker_465d54f9b04a81325fdc5c3ddef9bee6.bindPopup(popup_0374db664fa8b1358b225d45062fee14)
+        ;
+
+        
+    
+    
+            marker_465d54f9b04a81325fdc5c3ddef9bee6.bindTooltip(
+                `<div>
+                     17. Fort George
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1a40afc010d0c0e2b2795f9ef7cb1d8e = L.marker(
+                [57.722, -3.283],
+                {}
+            ).addTo(map_7d29f75c1bce2182a0324d26a80afd3f);
+        
+    
+            var icon_961087a117efe227d49b101382cc0a8d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "camera", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_1a40afc010d0c0e2b2795f9ef7cb1d8e.setIcon(icon_961087a117efe227d49b101382cc0a8d);
+        
+    
+        var popup_9fc71c8b86689ecf75413ec2b135bc48 = L.popup({"maxWidth": 320});
+
+        
+            var html_dea4268277f7fae3f60778c1702fd89c = $(`<div id="html_dea4268277f7fae3f60778c1702fd89c" style="width: 100.0%; height: 100.0%;">     <div style="min-width:220px">       <h4 style="margin:0 0 6px 0;">18. Lossiemouth</h4>       <div style="display:flex;gap:8px;flex-wrap:wrap;">         <a href="https://www.google.com/search?tbm=isch&q=Lossiemouth+Scotland+photos" target="_blank" style="text-decoration:none;">           <button style="padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Foto</button>         </a>         <a href="https://www.google.com/search?q=Lossiemouth+tide+times+Scotland" target="_blank" style="text-decoration:none;">         <button style="margin-top:6px;padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Maree (ricerca)</button></a>       </div>       <div style="margin-top:6px;color:#555;font-size:12px;">Suggerimento: luce dorata spesso migliore entro 60–90 min da alba/tramonto.</div>     </div>     </div>`)[0];
+            popup_9fc71c8b86689ecf75413ec2b135bc48.setContent(html_dea4268277f7fae3f60778c1702fd89c);
+        
+
+        marker_1a40afc010d0c0e2b2795f9ef7cb1d8e.bindPopup(popup_9fc71c8b86689ecf75413ec2b135bc48)
+        ;
+
+        
+    
+    
+            marker_1a40afc010d0c0e2b2795f9ef7cb1d8e.bindTooltip(
+                `<div>
+                     18. Lossiemouth
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_77ccb6c5a5feaeb39b72fb2d2d08f084 = L.marker(
+                [57.149, -2.094],
+                {}
+            ).addTo(map_7d29f75c1bce2182a0324d26a80afd3f);
+        
+    
+            var icon_266bdc06f79a783ab18e678dfee1b8b4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "camera", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_77ccb6c5a5feaeb39b72fb2d2d08f084.setIcon(icon_266bdc06f79a783ab18e678dfee1b8b4);
+        
+    
+        var popup_90ea8d93ca046a00ef832555b104b7fc = L.popup({"maxWidth": 320});
+
+        
+            var html_52fbfb64c941f68e76a118e416ea3afe = $(`<div id="html_52fbfb64c941f68e76a118e416ea3afe" style="width: 100.0%; height: 100.0%;">     <div style="min-width:220px">       <h4 style="margin:0 0 6px 0;">19. Aberdeen</h4>       <div style="display:flex;gap:8px;flex-wrap:wrap;">         <a href="https://www.google.com/search?tbm=isch&q=Aberdeen+Scotland+photos" target="_blank" style="text-decoration:none;">           <button style="padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Foto</button>         </a>         <a href="https://www.google.com/search?q=Aberdeen+tide+times+Scotland" target="_blank" style="text-decoration:none;">         <button style="margin-top:6px;padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Maree (ricerca)</button></a>       </div>       <div style="margin-top:6px;color:#555;font-size:12px;">Suggerimento: luce dorata spesso migliore entro 60–90 min da alba/tramonto.</div>     </div>     </div>`)[0];
+            popup_90ea8d93ca046a00ef832555b104b7fc.setContent(html_52fbfb64c941f68e76a118e416ea3afe);
+        
+
+        marker_77ccb6c5a5feaeb39b72fb2d2d08f084.bindPopup(popup_90ea8d93ca046a00ef832555b104b7fc)
+        ;
+
+        
+    
+    
+            marker_77ccb6c5a5feaeb39b72fb2d2d08f084.bindTooltip(
+                `<div>
+                     19. Aberdeen
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8afd1d0035260198b469bae0ef64c9da = L.marker(
+                [56.964, -2.211],
+                {}
+            ).addTo(map_7d29f75c1bce2182a0324d26a80afd3f);
+        
+    
+            var icon_aa78d13bc1f90b437d47e5523ab759cb = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "camera", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_8afd1d0035260198b469bae0ef64c9da.setIcon(icon_aa78d13bc1f90b437d47e5523ab759cb);
+        
+    
+        var popup_8f43b904991560a2fad97e0c177bf2f8 = L.popup({"maxWidth": 320});
+
+        
+            var html_769302a93151648d02904a77bc3db6f6 = $(`<div id="html_769302a93151648d02904a77bc3db6f6" style="width: 100.0%; height: 100.0%;">     <div style="min-width:220px">       <h4 style="margin:0 0 6px 0;">20. Stonehaven</h4>       <div style="display:flex;gap:8px;flex-wrap:wrap;">         <a href="https://www.google.com/search?tbm=isch&q=Stonehaven+Scotland+photos" target="_blank" style="text-decoration:none;">           <button style="padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Foto</button>         </a>         <a href="https://www.google.com/search?q=Stonehaven+tide+times+Scotland" target="_blank" style="text-decoration:none;">         <button style="margin-top:6px;padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Maree (ricerca)</button></a>       </div>       <div style="margin-top:6px;color:#555;font-size:12px;">Suggerimento: luce dorata spesso migliore entro 60–90 min da alba/tramonto.</div>     </div>     </div>`)[0];
+            popup_8f43b904991560a2fad97e0c177bf2f8.setContent(html_769302a93151648d02904a77bc3db6f6);
+        
+
+        marker_8afd1d0035260198b469bae0ef64c9da.bindPopup(popup_8f43b904991560a2fad97e0c177bf2f8)
+        ;
+
+        
+    
+    
+            marker_8afd1d0035260198b469bae0ef64c9da.bindTooltip(
+                `<div>
+                     20. Stonehaven
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8d04f3fdd7c10c7ba7329025c76581e5 = L.marker(
+                [56.945, -2.2],
+                {}
+            ).addTo(map_7d29f75c1bce2182a0324d26a80afd3f);
+        
+    
+            var icon_f38a279ab1d8d18ece17bc801c9842e0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "camera", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_8d04f3fdd7c10c7ba7329025c76581e5.setIcon(icon_f38a279ab1d8d18ece17bc801c9842e0);
+        
+    
+        var popup_1cde8dcda53323898069385d3df381d5 = L.popup({"maxWidth": 320});
+
+        
+            var html_1a38d67da0f7665e327768fdfb8194bd = $(`<div id="html_1a38d67da0f7665e327768fdfb8194bd" style="width: 100.0%; height: 100.0%;">     <div style="min-width:220px">       <h4 style="margin:0 0 6px 0;">21. Dunnottar Castle</h4>       <div style="display:flex;gap:8px;flex-wrap:wrap;">         <a href="https://www.google.com/search?tbm=isch&q=Dunnottar+Castle+Scotland+photos" target="_blank" style="text-decoration:none;">           <button style="padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Foto</button>         </a>         <a href="https://www.google.com/search?q=Dunnottar+Castle+tide+times+Scotland" target="_blank" style="text-decoration:none;">         <button style="margin-top:6px;padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Maree (ricerca)</button></a>       </div>       <div style="margin-top:6px;color:#555;font-size:12px;">Suggerimento: luce dorata spesso migliore entro 60–90 min da alba/tramonto.</div>     </div>     </div>`)[0];
+            popup_1cde8dcda53323898069385d3df381d5.setContent(html_1a38d67da0f7665e327768fdfb8194bd);
+        
+
+        marker_8d04f3fdd7c10c7ba7329025c76581e5.bindPopup(popup_1cde8dcda53323898069385d3df381d5)
+        ;
+
+        
+    
+    
+            marker_8d04f3fdd7c10c7ba7329025c76581e5.bindTooltip(
+                `<div>
+                     21. Dunnottar Castle
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_58e5d0829d180267ef766548782124d2 = L.marker(
+                [56.561, -2.588],
+                {}
+            ).addTo(map_7d29f75c1bce2182a0324d26a80afd3f);
+        
+    
+            var icon_0e1a2a0289e0a28164c17d6095536bb0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "camera", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_58e5d0829d180267ef766548782124d2.setIcon(icon_0e1a2a0289e0a28164c17d6095536bb0);
+        
+    
+        var popup_10e79c5bff0bc9216572d7e6439ff591 = L.popup({"maxWidth": 320});
+
+        
+            var html_0727d8584517d4c39086f99119b335d1 = $(`<div id="html_0727d8584517d4c39086f99119b335d1" style="width: 100.0%; height: 100.0%;">     <div style="min-width:220px">       <h4 style="margin:0 0 6px 0;">22. Arbroath Abbey</h4>       <div style="display:flex;gap:8px;flex-wrap:wrap;">         <a href="https://www.google.com/search?tbm=isch&q=Arbroath+Abbey+Scotland+photos" target="_blank" style="text-decoration:none;">           <button style="padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Foto</button>         </a>                </div>       <div style="margin-top:6px;color:#555;font-size:12px;">Suggerimento: luce dorata spesso migliore entro 60–90 min da alba/tramonto.</div>     </div>     </div>`)[0];
+            popup_10e79c5bff0bc9216572d7e6439ff591.setContent(html_0727d8584517d4c39086f99119b335d1);
+        
+
+        marker_58e5d0829d180267ef766548782124d2.bindPopup(popup_10e79c5bff0bc9216572d7e6439ff591)
+        ;
+
+        
+    
+    
+            marker_58e5d0829d180267ef766548782124d2.bindTooltip(
+                `<div>
+                     22. Arbroath Abbey
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b9147c97703125d451b45a63bf458cbe = L.marker(
+                [56.34, -2.796],
+                {}
+            ).addTo(map_7d29f75c1bce2182a0324d26a80afd3f);
+        
+    
+            var icon_acc7dc5d4d1c3f163255c74918dd0cac = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "camera", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_b9147c97703125d451b45a63bf458cbe.setIcon(icon_acc7dc5d4d1c3f163255c74918dd0cac);
+        
+    
+        var popup_7318a9947a0d43fd99ae7fc8e316cb06 = L.popup({"maxWidth": 320});
+
+        
+            var html_93393dc7f7573d1cfbb0cc0e70a6652e = $(`<div id="html_93393dc7f7573d1cfbb0cc0e70a6652e" style="width: 100.0%; height: 100.0%;">     <div style="min-width:220px">       <h4 style="margin:0 0 6px 0;">23. St Andrews</h4>       <div style="display:flex;gap:8px;flex-wrap:wrap;">         <a href="https://www.google.com/search?tbm=isch&q=St+Andrews+Scotland+photos" target="_blank" style="text-decoration:none;">           <button style="padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Foto</button>         </a>         <a href="https://www.google.com/search?q=St+Andrews+tide+times+Scotland" target="_blank" style="text-decoration:none;">         <button style="margin-top:6px;padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Maree (ricerca)</button></a>       </div>       <div style="margin-top:6px;color:#555;font-size:12px;">Suggerimento: luce dorata spesso migliore entro 60–90 min da alba/tramonto.</div>     </div>     </div>`)[0];
+            popup_7318a9947a0d43fd99ae7fc8e316cb06.setContent(html_93393dc7f7573d1cfbb0cc0e70a6652e);
+        
+
+        marker_b9147c97703125d451b45a63bf458cbe.bindPopup(popup_7318a9947a0d43fd99ae7fc8e316cb06)
+        ;
+
+        
+    
+    
+            marker_b9147c97703125d451b45a63bf458cbe.bindTooltip(
+                `<div>
+                     23. St Andrews
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_874394ea6e8850c0071f783450961af6 = L.marker(
+                [55.953, -3.188],
+                {}
+            ).addTo(map_7d29f75c1bce2182a0324d26a80afd3f);
+        
+    
+            var icon_c40adcc7d90e08d636f7e5774bc47dd8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "camera", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_874394ea6e8850c0071f783450961af6.setIcon(icon_c40adcc7d90e08d636f7e5774bc47dd8);
+        
+    
+        var popup_032b8bceceb0fc6c79228eb89f48da97 = L.popup({"maxWidth": 320});
+
+        
+            var html_9519c4024793050310b71e700abf014d = $(`<div id="html_9519c4024793050310b71e700abf014d" style="width: 100.0%; height: 100.0%;">     <div style="min-width:220px">       <h4 style="margin:0 0 6px 0;">24. Edimburgo</h4>       <div style="display:flex;gap:8px;flex-wrap:wrap;">         <a href="https://www.google.com/search?tbm=isch&q=Edimburgo+Scotland+photos" target="_blank" style="text-decoration:none;">           <button style="padding:6px 10px;border-radius:8px;border:1px solid #ccc;cursor:pointer;">Foto</button>         </a>                </div>       <div style="margin-top:6px;color:#555;font-size:12px;">Suggerimento: luce dorata spesso migliore entro 60–90 min da alba/tramonto.</div>     </div>     </div>`)[0];
+            popup_032b8bceceb0fc6c79228eb89f48da97.setContent(html_9519c4024793050310b71e700abf014d);
+        
+
+        marker_874394ea6e8850c0071f783450961af6.bindPopup(popup_032b8bceceb0fc6c79228eb89f48da97)
+        ;
+
+        
+    
+    
+            marker_874394ea6e8850c0071f783450961af6.bindTooltip(
+                `<div>
+                     24. Edimburgo
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_d491f6667f69e20a06dff168bb27a577 = L.polyline(
+                [[57.594, -4.539], [57.983, -4.403], [58.1, -4.4], [58.367, -4.966], [58.565, -4.738], [58.593, -4.783], [58.488, -4.424], [58.488, -4.428], [58.671, -3.376], [58.637, -3.07], [58.639, -3.011], [58.439, -3.094], [58.369, -3.206], [57.985, -3.944], [58.01, -3.851], [57.972, -3.987], [57.58, -4.055], [57.722, -3.283], [57.149, -2.094], [56.964, -2.211], [56.945, -2.2], [56.561, -2.588], [56.34, -2.796], [55.953, -3.188]],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_7d29f75c1bce2182a0324d26a80afd3f);
+        
+    
+            map_7d29f75c1bce2182a0324d26a80afd3f.fitBounds(
+                [[57.594, -4.539], [57.983, -4.403], [58.1, -4.4], [58.367, -4.966], [58.565, -4.738], [58.593, -4.783], [58.488, -4.424], [58.488, -4.428], [58.671, -3.376], [58.637, -3.07], [58.639, -3.011], [58.439, -3.094], [58.369, -3.206], [57.985, -3.944], [58.01, -3.851], [57.972, -3.987], [57.58, -4.055], [57.722, -3.283], [57.149, -2.094], [56.964, -2.211], [56.945, -2.2], [56.561, -2.588], [56.34, -2.796], [55.953, -3.188]],
+                {"padding": [20, 20]}
+            );
+        
+</script>
+</html>
